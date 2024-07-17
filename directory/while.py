@@ -20,6 +20,7 @@ def import_module(file_path, module_name):
     finally:
         # remove the module from sys.modules
         for key in set(sys.modules.keys()) - original_keys:
+            print(f"removing {key}")
             del sys.modules[key]
 
 async def main():
