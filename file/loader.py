@@ -16,7 +16,10 @@ def import_module(file_path, module_name):
 
 
 if __name__ == '__main__':
-    with open('./func.py', 'w') as f:
+
+    file_path = './func.py'
+
+    with open(file_path, 'w') as f:
         f.write('''
 a = 1
 def main():
@@ -25,19 +28,19 @@ def main():
     a = a + 1
 ''')
 
-    m = import_module('./func.py', 'b')
+    m = import_module(file_path, 'b')
 
     assert m is not None, "Module not loaded"
     m.main()
     m.main()
 
 
-    with open('./func.py', 'w') as f:
+    with open(file_path, 'w') as f:
         f.write('''
 def main():
-    print("module b.py is changed")
+    print("file is changed")
 ''')
         
-    m = import_module('./func.py', 'b')
+    m = import_module(file_path, 'b')
     m.main()
     
